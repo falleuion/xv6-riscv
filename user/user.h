@@ -1,5 +1,9 @@
 struct stat;
 
+#ifndef NULL
+#define NULL 0
+#endif  // NULL
+
 // system calls
 int fork(void);
 int exit(int) __attribute__((noreturn));

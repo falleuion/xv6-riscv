@@ -31,6 +31,13 @@ main(int argc, char **argv)
     if (read(fds[1], buf, sizeof(buf))) {
       printf("received: pong\n");
     }
+
+    int st = 0;
+    wait(&st);
+    if (st < 0) {
+      fprintf(2, "pingpong: child programs exec failed.\n");
+      exit(-2);
+    }
   }
 
   close(fds[0]);
