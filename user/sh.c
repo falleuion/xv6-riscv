@@ -153,19 +153,6 @@ getcmd(char *buf, int nbuf)
 }
 
 int
-containtab(const char *buf)
-{
-  int len = strlen(buf);
-  for (int i = 0; i < len; i++) {
-    if (buf[i] == '\t') {
-      return 1;
-    }
-  }
-
-  return 0;
-}
-
-int
 main(void)
 {
   static char buf[100];
@@ -187,9 +174,6 @@ main(void)
       if (chdir(buf + 3) < 0)
         fprintf(2, "cannot cd %s\n", buf + 3);
       continue;
-    }
-    if (containtab(buf)) {
-      write(1, "find tab\n", 10);
     }
     if (fork1() == 0)
       runcmd(parsecmd(buf));
